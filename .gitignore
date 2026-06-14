@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.DS_Store
+test_replication_run/
+test_replication_run_small/
+replication_outputs/
