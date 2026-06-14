@@ -1,6 +1,9 @@
 __pycache__/
 *.pyc
 .DS_Store
+README.old.md
+README.bak.md
+README.backup.md
 test_replication_run/
 test_replication_run_small/
 replication_outputs/
