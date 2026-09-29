@@ -155,7 +155,7 @@ The benchmark sources its stories from ToMBench. From the original source corpus
 
 ### Annotation Process
 
-The benchmark was built with a human-calibrated, LLM-assisted annotation pipeline:
+The benchmark was built with a human-validated, LLM-assisted annotation pipeline:
 
 - `1,383` source stories in the original corpus
 - `916` stories retained after source filtering
@@ -166,13 +166,13 @@ The benchmark was built with a human-calibrated, LLM-assisted annotation pipelin
 The accompanying paper reports:
 
 - Stage 1 expert-overlap validation after reconciliation: `83.72%`
-- Stage 2 strict all-annotator exact-match label reliability: `92.23%`
+- Stage 2 strict all-annotator exact-match label reliability: `92.38%`
 - Human-human agreement on the semantic-alignment validation set: `88.86%`
-- Human-judge agreement for the selected semantic judge: `72.03%`
+- Human-judge agreement for the selected semantic judge: `87.76%`
 
 ### Who are the source data producers?
 
-The story texts are sourced from ToMBench. The belief structures and schema labels are benchmark annotations produced through the OmniToM human-calibrated annotation pipeline described in the accompanying paper.
+The story texts are sourced from ToMBench. The belief structures and schema labels are benchmark annotations produced through the OmniToM human-validated annotation pipeline described in the accompanying paper.
 
 ### Personal and Sensitive Information
 
@@ -186,10 +186,10 @@ Additional known limitations:
 
 - the benchmark evaluates story-based Theory of Mind rather than interactive, embodied, or multimodal social reasoning
 - the retained stories are short and self-contained, and do not stress-test long-horizon information tracking, dense temporal structure, or deeply nested mental states beyond the order-3 schema
-- the released labels come from a human-calibrated LLM-assisted pipeline rather than fully manual annotation of every story
+- the released labels come from a human-validated LLM-assisted pipeline rather than fully manual annotation of every story
 - the seven-dimensional schema is human-labeled and may retain interpretive subjectivity in socially ambiguous cases
-- Stage 1 extraction evaluation in the paper relies on a human-calibrated semantic judge rather than full human adjudication across the full release
-- the selected semantic judge reached `72.03%` agreement with human semantic-alignment decisions, so extraction `F1` should be interpreted as an approximate aggregate metric rather than an exact belief-level alignment score
+- Stage 1 extraction evaluation in the paper relies on a human-validated semantic judge rather than full human adjudication across the full release
+- the selected semantic judge reached `87.76%` agreement with human semantic-alignment decisions, so extraction `F1` should be interpreted as an approximate aggregate metric rather than an exact belief-level alignment score
 
 ### Recommendations
 
@@ -200,12 +200,17 @@ Users should interpret OmniToM as a diagnostic benchmark for explicit belief-str
 ```bibtex
 @misc{omnitom2026,
   title={OmniToM: Benchmarking Theory of Mind in LLMs via Explicit Belief Modeling},
-  author={Anonymous Authors},
+  author={Bawatneh, Adam and Sapkota, Sagar and Bedi, Amrit Singh and Karmaker, Santu and Shah, Mubarak},
   year={2026},
-  note={Anonymous review release}
+  eprint={2605.26322},
+  archivePrefix={arXiv}
 }
 ```
 
 ## More Information
 
-This anonymous release is intended to support peer review and benchmark inspection. Public release metadata and authorship details may be updated in a later non-anonymous version.
+Paper: [OmniToM on arXiv](https://arxiv.org/abs/2605.26322)
+
+Code and evaluation scripts: [Adam-12-0/omnitom-benchmark](https://github.com/Adam-12-0/omnitom-benchmark)
+
+Project page: [OmniToM](https://adam-12-0.github.io/omnitom-project/)
