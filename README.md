@@ -70,26 +70,43 @@ The seven schema dimensions are: **Order · Truth Status · Knowledge Access · 
 
 ### Main Benchmark Results (Zero-Shot, TELeR L3)
 
-The camera-ready main table reports story-macro Stage 1 F1 with 95% bootstrap confidence intervals, endpoint QA accuracy, and story-macro Stage 2 accuracy. GPT-5 is omitted from Stage 1 because it serves as the semantic judge. **Bold** = best, <u>underline</u> = second-best.
+The camera-ready main results report story-macro Stage 1 F1 with 95% bootstrap confidence intervals, endpoint QA accuracy, and story-macro Stage 2 accuracy. GPT-5 is omitted from Stage 1 because it serves as the semantic judge. **Bold** = best, <u>underline</u> = second-best.
 
-| Model | Stage 1 F1 [95% CI] | Endpoint QA | Order | Status | Access | Repr | CType | Source | Context | Overall |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| **Closed-source** | | | | | | | | | | |
-| Gemini-2.5 Pro | **61.63 [60.88, 62.39]** | **82.77** | 96.23 | <u>86.50</u> | 66.94 | **89.01** | **86.35** | **86.70** | 87.07 | <u>85.54</u> |
-| Gemini-2.5 Flash | 55.75 [54.63, 56.82] | <u>81.82</u> | 95.56 | 84.97 | 71.34 | <u>87.58</u> | <u>85.97</u> | 84.10 | <u>92.14</u> | **85.95** |
-| GPT-5 | N/A | N/A | 95.18 | 82.72 | 66.85 | 83.42 | 79.96 | 83.02 | 88.83 | 82.85 |
-| **Open-weight** | | | | | | | | | | |
-| Gemma-3 27B | <u>58.03 [57.05, 59.01]</u> | 58.47 | <u>96.56</u> | 82.44 | 71.57 | 54.33 | 73.50 | 78.72 | 92.07 | 78.46 |
-| Mistral-Small 24B | 56.46 [55.53, 57.41] | 76.55 | 95.13 | 82.22 | **74.59** | 62.79 | 76.01 | 84.82 | 91.90 | 81.06 |
-| Mistral-Large 123B | 53.53 [52.61, 54.44] | 77.39 | **97.25** | **86.53** | <u>74.14</u> | 72.87 | 82.83 | <u>86.32</u> | **92.97** | 84.70 |
-| Qwen3 32B | 51.63 [50.68, 52.56] | 73.62 | 96.42 | 82.43 | 73.91 | 62.45 | 71.27 | 76.84 | 90.81 | 79.16 |
-| Llama-3.3 70B | 47.12 [46.12, 48.09] | 76.22 | 92.74 | 83.55 | 67.41 | 72.43 | 72.35 | 76.71 | 91.69 | 79.55 |
-| Qwen3 8B | 42.70 [41.50, 43.85] | 64.84 | 73.38 | 67.17 | 57.94 | 63.77 | 51.43 | 61.49 | 74.62 | 64.26 |
-| Llama-3.1 8B | 37.21 [36.02, 38.38] | 63.95 | 71.90 | 65.59 | 56.13 | 64.40 | 48.63 | 55.18 | 76.81 | 62.66 |
+| Model | Stage 1 F1 [95% CI] | Endpoint QA |
+| --- | ---: | ---: |
+| **Closed-source** | | |
+| Gemini-2.5 Pro | **61.63 [60.88, 62.39]** | **82.77** |
+| Gemini-2.5 Flash | 55.75 [54.63, 56.82] | <u>81.82</u> |
+| GPT-5 | N/A | N/A |
+| **Open-weight** | | |
+| Gemma-3 27B | <u>58.03 [57.05, 59.01]</u> | 58.47 |
+| Mistral-Small 24B | 56.46 [55.53, 57.41] | 76.55 |
+| Mistral-Large 123B | 53.53 [52.61, 54.44] | 77.39 |
+| Qwen3 32B | 51.63 [50.68, 52.56] | 73.62 |
+| Llama-3.3 70B | 47.12 [46.12, 48.09] | 76.22 |
+| Qwen3 8B | 42.70 [41.50, 43.85] | 64.84 |
+| Llama-3.1 8B | 37.21 [36.02, 38.38] | 63.95 |
+
+**Stage 2, Belief-Labeling Accuracy (%)**
+
+| Model | Order | Status | Access | Repr | CType | Source | Context | **Overall** |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| **Closed-source** | | | | | | | | |
+| Gemini-2.5 Pro | 96.23 | <u>86.50</u> | 66.94 | **89.01** | **86.35** | **86.70** | 87.07 | <u>85.54</u> |
+| Gemini-2.5 Flash | 95.56 | 84.97 | 71.34 | <u>87.58</u> | <u>85.97</u> | 84.10 | <u>92.14</u> | **85.95** |
+| GPT-5 | 95.18 | 82.72 | 66.85 | 83.42 | 79.96 | 83.02 | 88.83 | 82.85 |
+| **Open-weight** | | | | | | | | |
+| Gemma-3 27B | <u>96.56</u> | 82.44 | 71.57 | 54.33 | 73.50 | 78.72 | 92.07 | 78.46 |
+| Mistral-Small 24B | 95.13 | 82.22 | **74.59** | 62.79 | 76.01 | 84.82 | 91.90 | 81.06 |
+| Mistral-Large 123B | **97.25** | **86.53** | <u>74.14</u> | 72.87 | 82.83 | <u>86.32</u> | **92.97** | 84.70 |
+| Qwen3 32B | 96.42 | 82.43 | 73.91 | 62.45 | 71.27 | 76.84 | 90.81 | 79.16 |
+| Llama-3.3 70B | 92.74 | 83.55 | 67.41 | 72.43 | 72.35 | 76.71 | 91.69 | 79.55 |
+| Qwen3 8B | 73.38 | 67.17 | 57.94 | 63.77 | 51.43 | 61.49 | 74.62 | 64.26 |
+| Llama-3.1 8B | 71.90 | 65.59 | 56.13 | 64.40 | 48.63 | 55.18 | 76.81 | 62.66 |
 
 ### Detailed Results
 
-The tables below retain the category-wise Stage 1 breakdown and a separate Stage 2 view.
+The table below retains the category-wise Stage 1 breakdown.
 
 #### Stage 1, Belief Extraction F1 (%)
 
@@ -107,23 +124,6 @@ The tables below retain the category-wise Stage 1 breakdown and a separate Stage
 | Llama-3.3 70B | 70B | 37.51 | 64.07 | 46.33 | 36.27 | 47.23 | 57.70 | 41.58 | 47.12 |
 | Qwen3 8B | 8B | 38.72 | 49.70 | 43.59 | 37.14 | 47.87 | 47.20 | 37.60 | 42.70 |
 | Llama-3.1 8B | 8B | 26.34 | 48.29 | 35.80 | 30.85 | 35.01 | 53.52 | 30.08 | 37.21 |
-
-#### Stage 2, Belief-Labeling Accuracy (%)
-
-| Model | Order | Status | Access | Repr | CType | Source | Context | **Overall** |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| **Closed-source** | | | | | | | | |
-| Gemini-2.5 Pro | 96.23 | <u>86.50</u> | 66.94 | **89.01** | **86.35** | **86.70** | 87.07 | <u>85.54</u> |
-| Gemini-2.5 Flash | 95.56 | 84.97 | 71.34 | <u>87.58</u> | <u>85.97</u> | 84.10 | <u>92.14</u> | **85.95** |
-| GPT-5 | 95.18 | 82.72 | 66.85 | 83.42 | 79.96 | 83.02 | 88.83 | 82.85 |
-| **Open-weight** | | | | | | | | |
-| Mistral-Large 123B | **97.25** | **86.53** | <u>74.14</u> | 72.87 | 82.83 | <u>86.32</u> | **92.97** | 84.70 |
-| Mistral-Small 24B | 95.13 | 82.22 | **74.59** | 62.79 | 76.01 | 84.82 | 91.90 | 81.06 |
-| Llama-3.3 70B | 92.74 | 83.55 | 67.41 | 72.43 | 72.35 | 76.71 | 91.69 | 79.55 |
-| Qwen3 32B | 96.42 | 82.43 | 73.91 | 62.45 | 71.27 | 76.84 | 90.81 | 79.16 |
-| Gemma-3 27B | <u>96.56</u> | 82.44 | 71.57 | 54.33 | 73.50 | 78.72 | 92.07 | 78.46 |
-| Qwen3 8B | 73.38 | 67.17 | 57.94 | 63.77 | 51.43 | 61.49 | 74.62 | 64.26 |
-| Llama-3.1 8B | 71.90 | 65.59 | 56.13 | 64.40 | 48.63 | 55.18 | 76.81 | 62.66 |
 
 ### Key Finding: Actor-Specific Information Tracking is the Core Bottleneck
 
