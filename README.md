@@ -104,40 +104,11 @@ The camera-ready main results report story-macro Stage 1 F1 with 95% bootstrap c
 | Qwen3 8B | 73.38 | 67.17 | 57.94 | 63.77 | 51.43 | 61.49 | 74.62 | 64.26 |
 | Llama-3.1 8B | 71.90 | 65.59 | 56.13 | 64.40 | 48.63 | 55.18 | 76.81 | 62.66 |
 
-### Detailed Results
-
-The table below retains the category-wise Stage 1 breakdown.
-
-#### Stage 1, Belief Extraction F1 (%)
-
-| Model | Params | AST | FBT | FPT | HT | PST | SIT | SST | **Overall** |
-| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| **Closed-source** | | | | | | | | | |
-| Gemini-2.5 Pro | N/A | **54.33** | <u>71.55</u> | **62.11** | **55.10** | **64.84** | 63.74 | **60.21** | **61.63** |
-| Gemini-2.5 Flash | N/A | 42.40 | 56.48 | 57.78 | <u>50.34</u> | <u>58.55</u> | 62.91 | <u>56.31</u> | 55.75 |
-| GPT-5 | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
-| **Open-weight** | | | | | | | | | |
-| Gemma-3 27B | 27B | 48.72 | **72.39** | 56.05 | 45.46 | 56.72 | **68.76** | 55.77 | <u>58.03</u> |
-| Mistral-Small 24B | 24B | <u>52.97</u> | 54.58 | <u>59.79</u> | 48.32 | 56.97 | <u>66.20</u> | 53.17 | 56.46 |
-| Mistral-Large 123B | 123B | 47.75 | 71.28 | 53.66 | 41.78 | 58.53 | 57.38 | 48.35 | 53.53 |
-| Qwen3 32B | 32B | 46.88 | 57.32 | 53.38 | 41.41 | 57.25 | 56.51 | 48.67 | 51.63 |
-| Llama-3.3 70B | 70B | 37.51 | 64.07 | 46.33 | 36.27 | 47.23 | 57.70 | 41.58 | 47.12 |
-| Qwen3 8B | 8B | 38.72 | 49.70 | 43.59 | 37.14 | 47.87 | 47.20 | 37.60 | 42.70 |
-| Llama-3.1 8B | 8B | 26.34 | 48.29 | 35.80 | 30.85 | 35.01 | 53.52 | 30.08 | 37.21 |
-
 ### Key Finding: Actor-Specific Information Tracking is the Core Bottleneck
 
 OmniToM localizes a consistent failure mode across both stages. **Stage 1** extraction F1 shows a consistent gap between Order 0 world facts and actor-specific beliefs. Moving beyond world facts requires the model to determine which facts each actor perceived, missed, remembered, was told, or could infer. **Stage 2** results point to difficulty with *Knowledge Access* (56.13-74.59%), with several models also struggling on *Representation* (54.33-89.01%). Order 1 beliefs have the lowest overall labeling accuracy (72.2%), including 59.2% for Knowledge Access and 60.1% for Representation. Order 2+ accuracy is higher overall (75.3%), so the results do not show a monotonic decline with belief order.
 
 The gap between the two stages is also diagnostic: models label provided belief propositions far better (up to 85.95%) than they extract those propositions from raw text (up to 61.63%). This shows that current LLMs are much better at operating over an explicit belief structure once it is given than at constructing that structure directly from story text, a distinction invisible to endpoint QA benchmarks.
-
-### Additional Experiments
-
-**Endpoint QA.** The main table reports accuracy on the linked ToMBench questions. Gemini-2.5 Pro reaches 82.77% and Gemini-2.5 Flash reaches 81.82%. The endpoint rankings differ from the Stage 1 extraction rankings, showing that endpoint answers and explicit belief reconstruction measure different model behavior.
-
-**Reference and judge sensitivity.** Replacing the Claude reference with an independently generated Mistral-Large reference raises Stage 1 scores for all seven eligible models while preserving the broad ordering, with two adjacent swaps. Replacing GPT-5 with a Llama-3.3 judge shifts scores upward by 15.93-21.90 points and swaps Mistral-Small and Mistral-Large. GPT-5 is retained because its human agreement is higher (87.76% versus 75.85%).
-
-**Class imbalance.** Context labels are 91.81% Neutral, and a majority-label baseline reaches 91.54% accuracy. The camera-ready appendix therefore reports macro-F1 and balanced accuracy alongside raw Stage 2 accuracy.
 
 ## Dataset Format
 
